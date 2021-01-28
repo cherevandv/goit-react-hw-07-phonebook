@@ -1,29 +1,33 @@
 import * as contactsAPI from '../services/contacts-api';
 import * as contactsActions from './actions';
 
-export const addContact = (name, number) => dispatch => {
+export const addContact = (name, number) => async dispatch => {
   dispatch(contactsActions.addContactRequest());
-
-  contactsAPI
-    .fetchAddContact(name, number)
-    .then(({ data }) => dispatch(contactsActions.addContactSuccess(data)))
-    .catch(error => dispatch(contactsActions.addContactError(error)));
+  try {
+    const { data } = await contactsAPI.fetchAddContact(name, number);
+    dispatch(contactsActions.addContactSuccess(data));
+  } catch (error) {
+    dispatch(contactsActions.addContactError(error));
+  }
 };
 
-export const deleteContact = id => dispatch => {
+export const deleteContact = id => async dispatch => {
   dispatch(contactsActions.deleteContactRequest());
 
-  contactsAPI
-    .fetchDeleteContactById(id)
-    .then(() => dispatch(contactsActions.deleteContactSuccess(id)))
-    .catch(error => dispatch(contactsActions.deleteContactError(error)));
+  try {
+    await contactsAPI.fetchDeleteContactById(id);
+    dispatch(contactsActions.deleteContactSuccess(id));
+  } catch (error) {
+    dispatch(contactsActions.deleteContactError(error));
+  }
 };
 
-export const fetchAllContacts = () => dispatch => {
+export const fetchAllContacts = () => async dispatch => {
   dispatch(contactsActions.fetchContactsRequest());
-
-  contactsAPI
-    .fetchContacts()
-    .then(res => dispatch(contactsActions.fetchContactsSuccess(res)))
-    .catch(error => dispatch(contactsActions.fetchContactsError(error)));
+  try {
+    const response = await contactsAPI.fetchContacts();
+    dispatch(contactsActions.fetchContactsSuccess(response));
+  } catch (error) {
+    dispatch(contactsActions.fetchContactsError(error));
+  }
 };
