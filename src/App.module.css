@@ -1,9 +1,10 @@
 .container {
-  max-width: 1170px;
-  margin-top: 50px;
-  padding-left: 50px;
-  padding-right: 50px;
+  min-height: 100vh;
+  padding: 0 50px 0 50px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/1/14/Panorama_puy_de_dome_sud.jpg)
+    center 80%;
+  background-size: cover;
 }

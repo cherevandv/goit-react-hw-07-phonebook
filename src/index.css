@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+input:focus {
+  box-shadow: inset 1 0 3px #6ebfd8;
+  outline: none;
+}
+button:hover {
+  box-shadow: inset 1 0 2px #6ebfd8;
+}
+button:focus {
+  box-shadow: 0 0 3px #6ebfd8;
+  outline: none;
+}

@@ -11,3 +11,7 @@
 .button {
   background-color: none;
 }
+.button:focus {
+  box-shadow: 0 0 3px #6ebfd8;
+  outline: none;
+}

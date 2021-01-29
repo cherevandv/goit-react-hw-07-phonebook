@@ -13,3 +13,7 @@ export const getVisiblesContacts = createSelector(
     );
   },
 );
+
+export const getLoading = state => state.contacts.isLoading;
+
+export const getError = state => state.contacts.error;

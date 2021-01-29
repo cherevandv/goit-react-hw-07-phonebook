@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../redux/actions';
+import { actions } from '../../redux';
 import { getFilter } from '../../redux/selectors';
 import './Filter.module.css';
 

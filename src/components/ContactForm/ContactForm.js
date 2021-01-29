@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as operations from '../../redux/operations';
+import { operations } from '../../redux';
 import { getItems } from '../../redux/selectors';
 import s from './ContactForm.module.css';
 
