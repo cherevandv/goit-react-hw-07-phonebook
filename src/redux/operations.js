@@ -1,7 +1,8 @@
+// import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as contactsAPI from 'services/contacts-api';
 import { actions } from './';
 
-export const addContact = (name, number) => async dispatch => {
+export const addContact = ({ name, number }) => async dispatch => {
   dispatch(actions.addContactRequest());
   try {
     const { data } = await contactsAPI.fetchAddContact(name, number);
@@ -31,3 +32,29 @@ export const fetchAllContacts = () => async dispatch => {
     dispatch(actions.fetchContactsError(error));
   }
 };
+
+//createAsyncThunk:
+
+// export const addContact = createAsyncThunk(
+//   'contacts/addContact',
+//   async ({ name, number }) => {
+//     const { data } = await contactsAPI.fetchAddContact(name, number);
+//     return data;
+//   },
+// );
+
+// export const deleteContact = createAsyncThunk(
+//   'contacts/deleteContact',
+//   async id => {
+//     await contactsAPI.fetchDeleteContactById(id);
+//     return id;
+//   },
+// );
+
+// export const fetchAllContacts = createAsyncThunk(
+//   'contacts/fetchContacts',
+//   async () => {
+//     const response = await contactsAPI.fetchContacts();
+//     return response;
+//   },
+// );

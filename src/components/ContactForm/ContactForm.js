@@ -34,7 +34,7 @@ export default function ContactForm() {
       formReset();
       return alert(`${name} is already in contacts.`);
     }
-    dispatch(operations.addContact(name, number));
+    dispatch(operations.addContact({ name, number }));
     formReset();
   };
   const findSameName = name => {
